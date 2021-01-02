@@ -17,6 +17,18 @@ const carrinho = [
 const getNome = item => item.nome
 console.log(carrinho.map(getNome))
 
+//Como funciona o map
+
+Array.prototype.meuMap = function(fn){
+    const novoArray = [];
+    for(let i = 0; i < this.length; i++){
+        const resultado = fn(this[i], i, this)
+        novoArray.push(resultado)
+    }
+    return novoArray
+
+}
+
 const calcularPreco = item => item.qtde * item.preco
-const totais = carrinho.map(calcularPreco)
+const totais = carrinho.meuMap(calcularPreco)
 console.log(totais)
