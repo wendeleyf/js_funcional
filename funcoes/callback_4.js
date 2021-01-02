@@ -15,3 +15,23 @@ const nomeItensValidos = carrinho
     .map(getNome)
 
 console.log(nomeItensValidos)
+
+// Como funciona o filter
+
+Array.prototype.meuFilter = function(fn){
+    const novoArray = []
+
+    for(let i = 0; i < this.length; i++){
+        if(fn(this[i], i, this)){
+            novoArray.push(this[i])
+        }
+    }
+
+    return novoArray
+}
+
+const nomeItensValidos2 = carrinho
+    .meuFilter(qtdMaiorQueZero)
+    .map(getNome)
+
+console.log(nomeItensValidos2)
